@@ -1,34 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   z_test.c                                           :+:      :+:    :+:   */
+/*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/18 15:33:20 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/01/18 16:02:44 by aschaefe         ###   ########.fr       */
+/*   Created: 2023/03/03 14:47:02 by aschaefe          #+#    #+#             */
+/*   Updated: 2023/03/03 15:08:17 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-#include <fcntl.h>
+#include "pipex.h"
 
-int	main(void)
+void	test_print_env(char **env)
 {
-	char	*str;
-	int		fd;
-	int		i;
+	int	i;
+	int	j;
 
 	i = 0;
-	printf("GNL tester\n");
-	fd = open("./ascii_art/hibou_txt", O_RDONLY);
-	while (i < 8)
+	while (env[i])
 	{
-		str = get_next_line(fd);
-		printf("%s", str);
+		j = 0;
+		while (env[i][j])
+		{
+			ft_printf("%c", env[i][j]);
+			j++;
+		}
+		ft_printf("\n");
 		i++;
 	}
-	printf("\n\nft_printf tester\n\n");
-	ft_printf("Coucou hibou \nThe GNL tester printf a total of %d lines\n", i);
+}
+
+int	main(int argc, char **argv, char **env)
+{
+	t_pipex	pipex;
+
+	pipex = (t_pipex){};
+	(void)argc;
+	(void)argv;
+	test_print_env(env);
 	return (0);
 }

@@ -1,6 +1,6 @@
 #***** Name *****#
 
-NAME			=		template
+NAME			=		pipex
 
 #***** Makeflags *****#
 
@@ -8,7 +8,7 @@ MAKEFLAGS += --no-print-directory
 
 #***** Sources / Objs *****#
 
-SRC				=		z_test.c \
+SRC				=		pipex.c \
 
 OBJS			=		$(SRC:.c=.o)
 
@@ -56,7 +56,7 @@ logo :
 			@$(BS_N_TXT)
 
 start:
-			@tput setaf 2; cat ascii_art/template; tput setaf default
+			@tput setaf 2; cat ascii_art/pipex; tput setaf default
 			@$(BS_N_TXT)
 			@$(START_TXT)
 
@@ -77,12 +77,6 @@ l :			${OBJS}
 
 leaks :		all
 			leaks -atExit -- ./${NAME} 
-
-test: 		all
-			@${CC} ${CFLAGS} ${OBJS} libft/libft.a
-			@$(TEST_TXT)
-			@./a.out
-			@rm -f ./a.out
 
 #***** Clean *****#
 
