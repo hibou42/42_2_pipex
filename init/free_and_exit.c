@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   free_and_exit.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 14:47:02 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/03/07 15:03:55 by aschaefe         ###   ########.fr       */
+/*   Created: 2023/03/07 14:38:51 by aschaefe          #+#    #+#             */
+/*   Updated: 2023/03/07 14:50:56 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../pipex.h"
 
-int	main(int argc, char **argv, char **env)
+void	free_and_exit(t_pipex *pipex, int force_exit)
 {
-	t_pipex	pipex;
+	int	i;
 
-	pipex = (t_pipex){};
-	(void)argc;
-	(void)argv;
-	init_path(env, &pipex);
-	free_and_exit(&pipex, 0);
-	return (0);
+	i = 0;
+	if (pipex->path)
+	{
+		while (pipex->path[i])
+		{
+			free(pipex->path[i]);
+			i++;
+		}
+		free(pipex->path);
+	}
+	if (force_exit)
+		exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 14:50:25 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/03/03 15:03:24 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:42:31 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@
 
 typedef struct s_pipex
 {
-	int			test;
+	char	**path;
 }					t_pipex;
+
+void	init_path(char **env, t_pipex *pipex);
+void	free_and_exit(t_pipex *pipex, int force_exit);
 
 #endif

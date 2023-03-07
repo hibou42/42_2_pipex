@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 14:47:02 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/03/07 15:03:55 by aschaefe         ###   ########.fr       */
+/*   Created: 2023/03/07 14:02:00 by aschaefe          #+#    #+#             */
+/*   Updated: 2023/03/07 14:49:12 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../pipex.h"
 
-int	main(int argc, char **argv, char **env)
+void	init_path(char **env, t_pipex *pipex)
 {
-	t_pipex	pipex;
+	char	*tmp;
+	int		i;
 
-	pipex = (t_pipex){};
-	(void)argc;
-	(void)argv;
-	init_path(env, &pipex);
-	free_and_exit(&pipex, 0);
-	return (0);
+	i = 0;
+	while (env[i])
+	{
+		if (env[i][0] == 'P' && env[i][1] == 'A')
+		{
+			if (env[i][2] == 'T' && env[i][3] == 'H')
+			{
+				tmp = ft_strtrim(env[i], "PATH=");
+				pipex->path = ft_split(tmp, ':');
+				free(tmp);
+			}
+		}
+		i++;
+	}
 }
