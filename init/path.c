@@ -20,6 +20,7 @@ void	init_path(char **env, t_pipex *pipex)
 	i = 0;
 	while (env[i])
 	{
+		utilise strncmp !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		if (env[i][0] == 'P' && env[i][1] == 'A')
 		{
 			if (env[i][2] == 'T' && env[i][3] == 'H')
