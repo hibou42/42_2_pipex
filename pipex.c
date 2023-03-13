@@ -12,6 +12,7 @@
 
 #include "pipex.h"
 
+//test_print(&pipex);
 void	test_print(t_pipex *pipex)
 {
 	int	i;
@@ -29,12 +30,23 @@ int	main(int argc, char **argv, char **env)
 	t_pipex	pipex;
 
 	pipex = (t_pipex){};
-	(void)argc;
-	(void)argv;
 	init_path(env, &pipex);
-	test_print(&pipex);
-	int fd = access("/bin/ls", R_OK & W_OK & X_OK & F_OK);
-	printf("if 0 = it s gooooood, -1 = does not exist --> %d\n",fd);
+	check_arg(argc, argv, &pipex);
+	is_valid_cmd(&pipex, argv[1]);
+	printf("commande -> %s\n", pipex.cmd);
+	exec_cmd(&pipex, argv, env);
 	free_and_exit(&pipex, 0);
 	return (0);
 }
+
+/*
+Step 1 : Check si commande valable (acces)
+Step 2 : Executer la fameuse commande avec execve
+Step 3 : Rediriger la sortie de la commande dans un FD
+Step 4 : Tous faire dans un fork
+Step 5 : Faire 2 commandes
+Step 6 : Faire communiquer les deux commande via le Pipe
+*/
+/*
+best tuto : https://github.com/widium/pipex
+*/

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_and_exit.c                                    :+:      :+:    :+:   */
+/*   exec_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,20 +12,18 @@
 
 #include "../pipex.h"
 
-void	free_and_exit(t_pipex *pipex, int force_exit)
+void	exec_cmd(t_pipex *pipex, char **argv, char **env)
 {
-	int	i;
+	char	**tab_cmd;
 
-	i = 0;
-	if (pipex->path)
-	{
-		while (pipex->path[i])
-		{
-			free(pipex->path[i]);
-			i++;
-		}
-		free(pipex->path);
-	}
-	if (force_exit)
-		exit(1);
+	(void)argv;
+	tab_cmd = ft_calloc(2, sizeof(char *));
+	tab_cmd[0] = "ls -la";
+	tab_cmd[1] = NULL;
+	execve(pipex->cmd, tab_cmd, env);
+	free(tab_cmd);
 }
+
+/*
+execve(char *"PATH", char **"FLAGS", env)
+*/

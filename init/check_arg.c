@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   check_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 14:50:25 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/03/07 14:42:31 by aschaefe         ###   ########.fr       */
+/*   Created: 2023/03/07 14:38:51 by aschaefe          #+#    #+#             */
+/*   Updated: 2023/03/07 14:50:56 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "../pipex.h"
 
-# include "./libft/libft.h"
-
-typedef struct s_pipex
+void	check_arg(int argc, char **argv, t_pipex *pipex)
 {
-	char	**path;
-	char	*cmd;
-}					t_pipex;
-
-void	check_arg(int argc, char **argv, t_pipex *pipex);
-void	init_path(char **env, t_pipex *pipex);
-void	free_and_exit(t_pipex *pipex, int force_exit);
-void	is_valid_cmd(t_pipex *pipex, char *cmd);
-void	exec_cmd(t_pipex *pipex, char **argv, char **env);
-
-
-#endif
+	(void)argv;
+	if (argc != 2)
+	{
+		ft_printf("Error\nNombre d'argument pas bon\n");
+		free_and_exit(pipex, 1);
+	}
+}

@@ -9,8 +9,11 @@ MAKEFLAGS += --no-print-directory
 #***** Sources / Objs *****#
 
 SRC				=		pipex.c \
+						init/check_arg.c \
 						init/path.c \
-						init/free_and_exit.c \
+						utils/free_and_exit.c \
+						utils/is_valid_cmd.c \
+						utils/exec_cmd.c \
 
 OBJS			=		$(SRC:.c=.o)
 

@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   is_valid_cmd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 14:50:25 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/03/07 14:42:31 by aschaefe         ###   ########.fr       */
+/*   Created: 2023/03/07 14:02:00 by aschaefe          #+#    #+#             */
+/*   Updated: 2023/03/07 14:49:12 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "../pipex.h"
 
-# include "./libft/libft.h"
-
-typedef struct s_pipex
+void	is_valid_cmd(t_pipex *pipex, char *cmd)
 {
-	char	**path;
-	char	*cmd;
-}					t_pipex;
+	char	*tmp;
+	char	*tmp_add_slash;
+	int		ret;
+	int		i;
 
-void	check_arg(int argc, char **argv, t_pipex *pipex);
-void	init_path(char **env, t_pipex *pipex);
-void	free_and_exit(t_pipex *pipex, int force_exit);
-void	is_valid_cmd(t_pipex *pipex, char *cmd);
-void	exec_cmd(t_pipex *pipex, char **argv, char **env);
-
-
-#endif
+	i = 0;
+	while(pipex->path[i])
+	{
+		tmp_add_slash = ft_strjoin(pipex->path[i], "/");
+		tmp = ft_strjoin(tmp_add_slash, cmd);
+		ret = access(tmp, X_OK);
+		if (ret == 0)
+			pipex->cmd = ft_strtrim(tmp, "");
+		free(tmp_add_slash);
+		free(tmp);
+		i++;
+	}
+}
