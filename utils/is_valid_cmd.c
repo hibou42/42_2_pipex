@@ -26,7 +26,7 @@ void	is_valid_cmd(t_pipex *pipex, char *cmd)
 		tmp = ft_strjoin(tmp_add_slash, cmd);
 		ret = access(tmp, X_OK);
 		if (ret == 0)
-			pipex->cmd = ft_strtrim(tmp, "");
+			pipex->cmd_path = ft_strtrim(tmp, "");
 		free(tmp_add_slash);
 		free(tmp);
 		i++;

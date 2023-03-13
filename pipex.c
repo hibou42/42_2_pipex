@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "pipex.h"
+#include <fcntl.h>
 
 //test_print(&pipex);
 void	test_print(t_pipex *pipex)
@@ -33,7 +34,6 @@ int	main(int argc, char **argv, char **env)
 	init_path(env, &pipex);
 	check_arg(argc, argv, &pipex);
 	is_valid_cmd(&pipex, argv[1]);
-	printf("commande -> %s\n", pipex.cmd);
 	exec_cmd(&pipex, argv, env);
 	free_and_exit(&pipex, 0);
 	return (0);
@@ -46,7 +46,6 @@ Step 3 : Rediriger la sortie de la commande dans un FD
 Step 4 : Tous faire dans un fork
 Step 5 : Faire 2 commandes
 Step 6 : Faire communiquer les deux commande via le Pipe
-*/
-/*
+
 best tuto : https://github.com/widium/pipex
 */

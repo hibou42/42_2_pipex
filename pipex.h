@@ -18,7 +18,7 @@
 typedef struct s_pipex
 {
 	char	**path;
-	char	*cmd;
+	char	*cmd_path;
 }					t_pipex;
 
 void	check_arg(int argc, char **argv, t_pipex *pipex);

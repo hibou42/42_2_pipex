@@ -18,12 +18,13 @@ void	exec_cmd(t_pipex *pipex, char **argv, char **env)
 
 	(void)argv;
 	tab_cmd = ft_calloc(2, sizeof(char *));
-	tab_cmd[0] = "ls -la";
+	tab_cmd[0] = pipex->cmd_path;
 	tab_cmd[1] = NULL;
-	execve(pipex->cmd, tab_cmd, env);
+	execve(pipex->cmd_path, tab_cmd, env);
 	free(tab_cmd);
 }
 
 /*
 execve(char *"PATH", char **"FLAGS", env)
+par Flag on entend la commande en flag[0] et les flags en flag[1]
 */

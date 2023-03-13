@@ -26,8 +26,8 @@ void	free_and_exit(t_pipex *pipex, int force_exit)
 		}
 		free(pipex->path);
 	}
-	if (pipex->cmd)
-		free(pipex->cmd);
+	if (pipex->cmd_path)
+		free(pipex->cmd_path);
 	if (force_exit)
 		exit(1);
 }
