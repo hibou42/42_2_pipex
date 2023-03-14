@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 14:50:25 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/03/14 14:42:28 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/03/14 15:10:35 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,5 @@ void	free_and_exit(t_pipex *pipex, int force_exit);
 void	is_valid_cmd(t_pipex *pipex, char *cmd);
 void	exec_cmd(t_pipex *pipex, char **env);
 void	open_fd(t_pipex *pipex, char **argv);
-void	test_print(t_pipex *pipex);
 
 #endif
