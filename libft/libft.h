@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aschaefe <aschaefe@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 21:55:27 by aschaefe          #+#    #+#             */
-/*   Updated: 2022/11/04 20:23:46 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/03/14 13:46:51 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef LIBFT_H
 # define LIBFT_H
 
@@ -24,6 +25,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <limits.h>
+# include <fcntl.h>
 
 typedef struct s_list
 {

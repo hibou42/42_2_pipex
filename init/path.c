@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:02:00 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/03/07 14:49:12 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/03/14 14:48:00 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	init_path(char **env, t_pipex *pipex)
 		ret_cmp = ft_strncmp(env[i], "PATH=", 5);
 		if (ret_cmp == 0)
 		{
-				tmp = ft_strtrim(env[i], "PATH=");
-				pipex->path = ft_split(tmp, ':');
-				free(tmp);
+			tmp = ft_strtrim(env[i], "PATH=");
+			pipex->path = ft_split(tmp, ':');
+			free(tmp);
 		}
 		i++;
 	}

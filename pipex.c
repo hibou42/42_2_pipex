@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 14:47:02 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/03/07 15:03:55 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/03/14 14:41:32 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	test_print(t_pipex *pipex)
 	int	i;
 
 	i = 0;
-	while (pipex->path[i])
+	while (pipex->tab_cmd[i])
 	{
 		ft_printf("%s\n", pipex->path[i]);
 		i++;
@@ -33,8 +33,10 @@ int	main(int argc, char **argv, char **env)
 	pipex = (t_pipex){};
 	init_path(env, &pipex);
 	check_arg(argc, argv, &pipex);
-	is_valid_cmd(&pipex, argv[1]);
-	exec_cmd(&pipex, argv, env);
+	is_valid_cmd(&pipex, argv[2]);
+	init_tab_cmd(&pipex, argv[2]);
+	open_fd(&pipex, argv);
+	exec_cmd(&pipex, env);
 	free_and_exit(&pipex, 0);
 	return (0);
 }
@@ -48,4 +50,7 @@ Step 5 : Faire 2 commandes
 Step 6 : Faire communiquer les deux commande via le Pipe
 
 best tuto : https://github.com/widium/pipex
+
+	int		fd;
+	fd = open(argv[1], O_RDONLY);
 */

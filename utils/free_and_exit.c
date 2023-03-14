@@ -6,13 +6,13 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:38:51 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/03/07 14:50:56 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/03/14 14:37:16 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-void	free_and_exit(t_pipex *pipex, int force_exit)
+void	free1(t_pipex *pipex)
 {
 	int	i;
 
@@ -26,8 +26,28 @@ void	free_and_exit(t_pipex *pipex, int force_exit)
 		}
 		free(pipex->path);
 	}
+	i = 0;
+	if (pipex->tab_cmd)
+	{
+		while (pipex->tab_cmd[i])
+		{
+			free(pipex->tab_cmd[i]);
+			i++;
+		}
+		free(pipex->tab_cmd);
+	}
+}
+
+void	free2(t_pipex *pipex)
+{
 	if (pipex->cmd_path)
 		free(pipex->cmd_path);
+}
+
+void	free_and_exit(t_pipex *pipex, int force_exit)
+{
+	free1(pipex);
+	free2(pipex);
 	if (force_exit)
 		exit(1);
 }
