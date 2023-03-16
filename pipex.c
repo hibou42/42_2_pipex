@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 14:47:02 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/03/14 14:41:32 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/03/16 12:55:18 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ int	main(int argc, char **argv, char **env)
 	pipex = (t_pipex){};
 	init_path(env, &pipex);
 	check_arg(argc, argv, &pipex);
+	//creer le pipe
+	//fork
+	//if fork == 0 (c est que t es dans child)
 	is_valid_cmd(&pipex, argv[2]);
 	init_tab_cmd(&pipex, argv[2]);
 	open_fd(&pipex, argv);
