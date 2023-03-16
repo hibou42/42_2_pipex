@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_arg.c                                        :+:      :+:    :+:   */
+/*   parent_process.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 14:38:51 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/03/16 18:01:55 by aschaefe         ###   ########.fr       */
+/*   Created: 2023/03/16 18:06:41 by aschaefe          #+#    #+#             */
+/*   Updated: 2023/03/16 18:20:04 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-void	check_arg(int argc, char **argv, t_pipex *pipex)
+void	parent_process(t_pipex *pipex, char **argv, char **env)
 {
-	(void)argv;
-	if (argc != 4)
-	{
-		error(pipex, "Arg's NB Error\n");
-	}
+	is_valid_cmd(pipex, argv[3]);
+	init_tab_cmd(pipex, argv[3]);
+	open_fd(pipex, argv);
+	exec_cmd(pipex, env);
 }

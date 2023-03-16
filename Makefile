@@ -16,6 +16,9 @@ SRC				=		pipex.c \
 						utils/is_valid_cmd.c \
 						utils/exec_cmd.c \
 						utils/open_fd.c \
+						utils/error.c \
+						utils/child_process.c \
+						utils/parent_process.c \
 
 OBJS			=		$(SRC:.c=.o)
 
@@ -83,7 +86,7 @@ l :			${OBJS}
 			@$(END_COMP_TXT)
 
 leaks :		all
-			leaks -atExit -- ./${NAME} 
+			leaks --atExit -- ./${NAME}
 
 #***** Clean *****#
 

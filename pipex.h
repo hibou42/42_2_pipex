@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 14:50:25 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/03/16 12:19:13 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/03/16 18:07:30 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ typedef struct s_pipex
 	char	**path;
 	char	*cmd_path;
 	char	**tab_cmd;
+	int		pid;
 	int		fd_in;
+	int		fd_out;
 }					t_pipex;
 
 void	check_arg(int argc, char **argv, t_pipex *pipex);
@@ -30,5 +32,8 @@ void	free_and_exit(t_pipex *pipex, int force_exit);
 void	is_valid_cmd(t_pipex *pipex, char *cmd);
 void	exec_cmd(t_pipex *pipex, char **env);
 void	open_fd(t_pipex *pipex, char **argv);
+void	error(t_pipex *pipex, char *msg);
+void	child_process(t_pipex *pipex, char **argv, char **env);
+void	parent_process(t_pipex *pipex, char **argv, char **env);
 
 #endif

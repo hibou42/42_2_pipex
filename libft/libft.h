@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 21:55:27 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/03/14 13:46:51 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/03/16 17:23:28 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include <stdarg.h>
 # include <limits.h>
 # include <fcntl.h>
+# include <errno.h>
 
 typedef struct s_list
 {
