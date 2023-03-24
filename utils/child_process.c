@@ -16,6 +16,10 @@ void	child_process(t_pipex *pipex, char **argv, char **env)
 {
 	is_valid_cmd(pipex, argv[2]);
 	init_tab_cmd(pipex, argv[2]);
-	open_fd(pipex, argv);
+	close(pipex->tab_fd[0]);
+	dup2(pipex->fd_in, 0);
+	dup2(pipex->tab_fd[1], 1);
+	//open_fd(pipex, argv);
 	exec_cmd(pipex, env);
+	close(pipex->tab_fd[1]);
 }

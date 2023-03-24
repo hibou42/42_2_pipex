@@ -33,6 +33,7 @@ int	main(int argc, char **argv, char **env)
 	pipex = (t_pipex){};
 	init_path(env, &pipex);
 	check_arg(argc, argv, &pipex);
+	pipe(pipex.tab_fd);
 	pipex.pid = fork();
 	if (pipex.pid < 0)
 		error(&pipex, "FORK ERROR\n");

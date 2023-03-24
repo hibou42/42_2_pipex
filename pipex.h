@@ -21,6 +21,7 @@ typedef struct s_pipex
 	char	*cmd_path;
 	char	**tab_cmd;
 	int		pid;
+	int		tab_fd[2];
 	int		fd_in;
 	int		fd_out;
 }					t_pipex;

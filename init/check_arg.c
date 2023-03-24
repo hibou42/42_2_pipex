@@ -15,7 +15,7 @@
 void	check_arg(int argc, char **argv, t_pipex *pipex)
 {
 	(void)argv;
-	if (argc != 4)
+	if (argc != 5)
 	{
 		error(pipex, "Arg's NB Error\n");
 	}
