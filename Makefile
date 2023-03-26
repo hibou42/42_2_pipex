@@ -11,10 +11,8 @@ MAKEFLAGS += --no-print-directory
 SRC				=		pipex.c \
 						init/check_arg.c \
 						init/path.c \
-						init/tab_cmd.c \
 						utils/free_and_exit.c \
 						utils/is_valid_cmd.c \
-						utils/exec_cmd.c \
 						utils/open_fd.c \
 						utils/error.c \
 						utils/child_process.c \
