@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 14:47:02 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/03/16 20:41:40 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/03/28 14:49:57 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,9 @@ int	main(int argc, char **argv, char **env)
 	pipex = (t_pipex){};
 	init_path(env, &pipex);
 	check_arg(argc, argv, &pipex);
-	pipex.fd_in = open(argv[1], O_RDONLY);
-	pipex.fd_out = open(argv[4], O_CREAT | O_WRONLY | O_TRUNC, 
-					S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
-	pipe(pipex.tab_fd);
-	pipex.pid = fork();
-	if (pipex.pid < 0)
-		error(&pipex, "FORK ERROR\n");
-	else if (pipex.pid == 0)
-		child_process(&pipex, argv, env);
-	else
-		parent_process(&pipex, argv, env);
+	init_pipe(&pipex);
+	fd_open(argv, &pipex);
+	time_to_fork(&pipex, argv, env);
 	free_and_exit(&pipex, 0);
 	return (0);
 }

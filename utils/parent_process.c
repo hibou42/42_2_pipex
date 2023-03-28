@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 18:06:41 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/03/16 18:20:04 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/03/28 16:08:09 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	parent_process(t_pipex *pipex, char **argv, char **env)
 {
 	pipex->tab_cmd = ft_split(argv[3], ' ');
-	if(is_valid_cmd(pipex) != 0)
+	if (is_valid_cmd(pipex) != 0)
 		error(pipex, "command not found");
 	close(pipex->tab_fd[1]);
 	dup2(pipex->tab_fd[0], 0);

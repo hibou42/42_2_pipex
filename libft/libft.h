@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 21:55:27 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/03/16 17:23:28 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/03/28 16:05:13 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,14 @@ void	*gnl_calloc(size_t nb, size_t size);
 
 /* ***** printf ***** */
 
-int	ft_printf(const char *input, ...);
-int	core_c(int job);
-int	core_s(char *str);
-int	core_di(int job);
-int	core_u(unsigned int job, int i);
-int	core_p(unsigned long long job);
-int	core_x(unsigned int nbr);
-int	core_xx(unsigned int nbr);
-int	ft_puthex(unsigned long long nbr);
+int		ft_printf(const char *input, ...);
+int		core_c(int job);
+int		core_s(char *str);
+int		core_di(int job);
+int		core_u(unsigned int job, int i);
+int		core_p(unsigned long long job);
+int		core_x(unsigned int nbr);
+int		core_xx(unsigned int nbr);
+int		ft_puthex(unsigned long long nbr);
 
 #endif

@@ -11,10 +11,12 @@ MAKEFLAGS += --no-print-directory
 SRC				=		pipex.c \
 						init/check_arg.c \
 						init/path.c \
+						init/pipe.c \
+						init/fd_open.c \
 						utils/free_and_exit.c \
 						utils/is_valid_cmd.c \
-						utils/open_fd.c \
 						utils/error.c \
+						utils/time_to_fork.c \
 						utils/child_process.c \
 						utils/parent_process.c \
 
@@ -85,6 +87,28 @@ l :			${OBJS}
 
 leaks :		all
 			leaks --atExit -- ./${NAME}
+
+test :		
+			make re
+			rm -rf output.txt
+			./pipex input.txt "ls -l" "wc -l" output.txt
+			@echo "pipex res ="
+			@cat output.txt
+			@rm -rf output.txt
+			< input.txt ls -l | wc -l > output.txt
+			@echo "shell res ="
+			@cat output.txt
+
+test2 :		
+			make re
+			rm -rf output.txt
+			./pipex input.txt "grep a1" "wc -w" output.txt
+			@echo "pipex res ="
+			@cat output.txt
+			@rm -rf output.txt
+			< input.txt grep a1 | wc -w > output.txt
+			@echo "shell res ="
+			@cat output.txt
 
 #***** Clean *****#
 
