@@ -34,7 +34,8 @@ int	main(int argc, char **argv, char **env)
 	init_path(env, &pipex);
 	check_arg(argc, argv, &pipex);
 	pipex.fd_in = open(argv[1], O_RDONLY);
-	pipex.fd_out = open(argv[4], O_CREAT | O_WRONLY , S_IRUSR | S_IWUSR);
+	pipex.fd_out = open(argv[4], O_CREAT | O_WRONLY | O_TRUNC, 
+					S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 	pipe(pipex.tab_fd);
 	pipex.pid = fork();
 	if (pipex.pid < 0)

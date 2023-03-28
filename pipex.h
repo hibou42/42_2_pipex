@@ -29,7 +29,7 @@ typedef struct s_pipex
 void	check_arg(int argc, char **argv, t_pipex *pipex);
 void	init_path(char **env, t_pipex *pipex);
 void	free_and_exit(t_pipex *pipex, int force_exit);
-void	is_valid_cmd(t_pipex *pipex);
+int		is_valid_cmd(t_pipex *pipex);
 void	exec_cmd(t_pipex *pipex, char **env);
 void	open_fd(t_pipex *pipex, char **argv);
 void	error(t_pipex *pipex, char *msg);

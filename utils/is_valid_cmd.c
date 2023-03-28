@@ -12,7 +12,7 @@
 
 #include "../pipex.h"
 
-void	is_valid_cmd(t_pipex *pipex)
+int	is_valid_cmd(t_pipex *pipex)
 {
 	char	*tmp;
 	char	*tmp_add_slash;
@@ -29,4 +29,7 @@ void	is_valid_cmd(t_pipex *pipex)
 		free(tmp);
 		i++;
 	}
+	if (!pipex->cmd_path)
+		return (1);
+	return (0);
 }

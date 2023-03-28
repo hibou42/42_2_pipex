@@ -15,7 +15,8 @@
 void	child_process(t_pipex *pipex, char **argv, char **env)
 {
 	pipex->tab_cmd = ft_split(argv[2], ' ');
-	is_valid_cmd(pipex);
+	if(is_valid_cmd(pipex) != 0)
+		error(pipex, "command not found");
 	close(pipex->tab_fd[0]);
 	dup2(pipex->fd_in, 0);
 	dup2(pipex->tab_fd[1], 1);
