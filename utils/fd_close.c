@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time_to_fork.c                                     :+:      :+:    :+:   */
+/*   fd_close.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/28 14:24:47 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/03/31 14:50:23 by aschaefe         ###   ########.fr       */
+/*   Created: 2023/03/31 14:51:21 by aschaefe          #+#    #+#             */
+/*   Updated: 2023/03/31 14:52:35 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-void	time_to_fork(t_pipex *pipex, char **argv, char **env)
+void	fd_close(t_pipex *pipex)
 {
-	pipex->pid[0] = fork();
-	if (pipex->pid[0] < 0)
-		error(pipex, "FORK ERROR\n");
-	else if (pipex->pid[0] == 0)
-		child_process(pipex, argv, env);
-	pipex->pid[1] = fork();
-	if (pipex->pid[1] < 0)
-		error(pipex, "FORK ERROR\n");
-	else if (pipex->pid[1] == 0)
-		child2_process(pipex, argv, env);
+	if (close(pipex->tab_fd[0]) < 0)
+		error(pipex, "error closing fd");
+	if (close(pipex->tab_fd[1]) < 0)
+		error(pipex, "error closing fd");
 }

@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 14:47:02 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/03/28 14:49:57 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/03/31 14:51:03 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ int	main(int argc, char **argv, char **env)
 	init_pipe(&pipex);
 	fd_open(argv, &pipex);
 	time_to_fork(&pipex, argv, env);
+	fd_close(&pipex);
+	waitpid(pipex.pid[0], NULL, 0);
+	waitpid(pipex.pid[1], NULL, 0);
 	free_and_exit(&pipex, 0);
 	return (0);
 }

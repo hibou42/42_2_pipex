@@ -13,12 +13,13 @@ SRC				=		pipex.c \
 						init/path.c \
 						init/pipe.c \
 						init/fd_open.c \
+						utils/fd_close.c \
 						utils/free_and_exit.c \
 						utils/is_valid_cmd.c \
 						utils/error.c \
 						utils/time_to_fork.c \
 						utils/child_process.c \
-						utils/parent_process.c \
+						utils/child2_process.c \
 
 OBJS			=		$(SRC:.c=.o)
 
