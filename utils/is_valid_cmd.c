@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:02:00 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/03/31 14:17:54 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:51:10 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	is_valid_cmd(t_pipex *pipex)
 		tmp_add_slash = ft_strjoin(pipex->path[i], "/");
 		tmp = ft_strjoin(tmp_add_slash, pipex->tab_cmd[0]);
 		if (!tmp)
-			error(pipex, "error from strjoin");
+			error(pipex, "error from strjoin", NULL);
 		if (access(tmp, F_OK) == 0)
 		{
 			pipex->cmd_path = tmp;

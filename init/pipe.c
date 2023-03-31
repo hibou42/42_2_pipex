@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:31:06 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/03/31 14:02:34 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:50:45 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	init_pipe(t_pipex *pipex)
 {
 	if (pipe(pipex->tab_fd) < 0)
-		error(pipex, "Open error");
+		error(pipex, "Open error", NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 14:02:00 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/03/31 14:09:24 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:50:41 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ void	init_path(char **env, t_pipex *pipex)
 		i++;
 	}
 	if (pipex->path == NULL)
-		error(pipex, "error path not found");
+		error(pipex, "error path not found", NULL);
 }

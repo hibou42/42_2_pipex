@@ -12,7 +12,6 @@ SRC				=		pipex.c \
 						init/check_arg.c \
 						init/path.c \
 						init/pipe.c \
-						init/fd_open.c \
 						utils/fd_close.c \
 						utils/free_and_exit.c \
 						utils/is_valid_cmd.c \
