@@ -90,7 +90,8 @@ leaks :		all
 
 test :		
 			make re
-			rm -rf output.txt
+			@tput setaf 1
+			@rm -rf output.txt
 			./pipex input.txt "ls -l" "wc -l" output.txt
 			@echo "pipex res ="
 			@cat output.txt
@@ -101,7 +102,8 @@ test :
 
 test2 :		
 			make re
-			rm -rf output.txt
+			@tput setaf 1
+			@rm -rf output.txt
 			./pipex input.txt "grep a1" "wc -w" output.txt
 			@echo "pipex res ="
 			@cat output.txt

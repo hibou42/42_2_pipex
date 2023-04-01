@@ -27,6 +27,11 @@
 # include <limits.h>
 # include <fcntl.h>
 # include <errno.h>
+# include <sys/types.h>
+# include <sys/wait.h>
+
+
+
 
 typedef struct s_list
 {
